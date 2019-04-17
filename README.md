@@ -1,2 +1,2 @@
 # dc-movies
-This is a lab proyect, movie librar using vanilla js
+This is a lab proyect, movie library using vanilla js
