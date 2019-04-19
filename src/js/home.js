@@ -1,14 +1,14 @@
-//Ejemplo Promesas usando Fetch
-fetch('https://randomuser.me/api')
-  .then(function (response) {
-    return response.json()  
-  })
-  .then(function(user){
-    console.log('user: ', user)
-  })
-  .catch(function(){
-    console.log('something was wrong, sorry')
-  });
+// //Ejemplo Promesas usando Fetch
+// fetch('https://randomuser.me/api')
+//   .then(function (response) {
+//     return response.json()  
+//   })
+//   .then(function(user){
+//     console.log('user: ', user)
+//   })
+//   .catch(function(){
+//     console.log('something was wrong, sorry')
+//   });
 
 //Funciones asincronas usando Async await
 //Sugar sintax: IIFE => immediately invoked function expression
@@ -22,8 +22,8 @@ fetch('https://randomuser.me/api')
     const actionList = await getData('https://yts.am/api/v2/list_movies.json?genre=action');
     const dramaList = await getData('https://yts.am/api/v2/list_movies.json?genre=drama');
     const animationList = await getData('https://yts.am/api/v2/list_movies.json?genre=animation');
-   console.log('Action:', actionList, 'Drama: ', dramaList, 'Animation: ', animationList)
-   console.log(actionList.data.movies)
+  //  console.log('Action:', actionList, 'Drama: ', dramaList, 'Animation: ', animationList)
+  //  console.log(actionList.data.movies)
 
   //  const movies = actionList.data.movies
    
@@ -64,7 +64,7 @@ fetch('https://randomuser.me/api')
   //Escucha los clicks en todo el documento y busca el match con la clase
   document.addEventListener("click", function(event){
     if (event.target.classList.contains("primary-image")){
-        console.log(event.target.dataset)
+        // console.log(event.target.dataset)
         const elementData = event.target.dataset
        showModal(elementData)
     }
