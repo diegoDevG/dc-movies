@@ -46,12 +46,13 @@ fetch('https://randomuser.me/api')
   const $modalTitle = $modal.querySelector('h1');
   const $modalImage = $modal.querySelector('img');
   const $modalDescription = $modal.querySelector('p');
+  const $modalTrailerBtn = $modal.querySelector('#watch-trailer');
 
   function videoItemTemplate(movie) {
     return (
-      `<div class="primaryPlaylistItem">
+      `<div class="primaryPlaylistItem" data-id="${movie.id}">
         <div class="primaryPlaylistItem-image">
-          <img class="primary-image" src="${movie.medium_cover_image}">
+          <img class="primary-image" src="${movie.medium_cover_image}" data-title="${movie.title}" data-description="${movie.description_full}" data-img="${movie.medium_cover_image}" data-trailer="${movie.yt_trailer_code}">
         </div>
         <h4 class="primaryPlaylistItem-title">
           ${movie.title}
@@ -60,10 +61,12 @@ fetch('https://randomuser.me/api')
     )
   }
 
-  //Escucha los clicks en todo el documento y busca el mathc con la clase
+  //Escucha los clicks en todo el documento y busca el match con la clase
   document.addEventListener("click", function(event){
     if (event.target.classList.contains("primary-image")){
-       showModal()
+        console.log(event.target.dataset)
+        const elementData = event.target.dataset
+       showModal(elementData)
     }
   }, false);
 
@@ -118,9 +121,16 @@ fetch('https://randomuser.me/api')
     
   })
 
-  function showModal(){   
+   const showModal = (elemnt) =>{   
+    const { title, img, description, trailer } = elemnt
     $overlay.classList.add('active');
     $modal.style.animation = 'modalIn .8s forwards';
+    $modalTitle.textContent = title;
+    $modalImage.setAttribute('src', img) 
+    $modalDescription.textContent = description;  
+    // $modalTrailerBtn.setAttribute("href", "https://www.w3schools.com");   
+    $modalTrailerBtn.setAttribute('href', `https://www.youtube.com/embed/${trailer}?rel=0&wmode=transparent&border=0&autoplay=1&iv_load_policy=3`)    
+
   }
 
   $hideModal.addEventListener('click', hideModal)
